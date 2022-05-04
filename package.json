@@ -24,7 +24,13 @@
         "command": "vscode-onboarding.time",
         "title": "Time"
       }
-    ]
+    ],
+	"keybindings": {
+        "command": "vscode-onboarding.time",
+        "key": "ctrl+T",
+        "mac": "cmd+T",
+        "when": "isMac || isLinux || isWindows"
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
