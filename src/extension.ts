@@ -23,7 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
 	let time = vscode.commands.registerCommand('vscode-onboarding.time', () => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
-		vscode.window.showInformationMessage(moment().format());
+		vscode.window.showWarningMessage(`It's already ${moment().format()} !`);
 	});
 
 	context.subscriptions.push(disposable);
