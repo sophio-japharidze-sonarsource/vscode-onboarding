@@ -11,7 +11,8 @@
   ],
   "activationEvents": [
     "onCommand:vscode-onboarding.heyThere",
-	"onCommand:vscode-onboarding.time"
+    "onCommand:vscode-onboarding.time",
+    "onView:greetings"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -30,7 +31,18 @@
         "key": "ctrl+T",
         "mac": "cmd+T",
         "when": "isMac || isLinux || isWindows"
-    }
+    },
+	"views": {
+		"explorer": [
+			{
+				"id": "greetings",
+				"name": "Greetings",
+				"when": "isMac || isLinux || isWindows",
+				"icon": "./calm.png",
+				"contextualTitle": "Get Greeted"
+			}
+		]
+	}
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
