@@ -1,9 +1,7 @@
 import * as assert from 'assert';
 
-// You can import and use all API from the 'vscode' module
-// as well as import your extension to test it
 import * as vscode from 'vscode';
-// import * as myExtension from '../../extension';
+import { businessLogic } from '../../extension';
 
 suite('Extension Test Suite', () => {
 	vscode.window.showInformationMessage('Start all tests.');
@@ -11,5 +9,18 @@ suite('Extension Test Suite', () => {
 	test('Sample test', () => {
 		assert.strictEqual(-1, [1, 2, 3].indexOf(5));
 		assert.strictEqual(-1, [1, 2, 3].indexOf(0));
+	});
+
+	test('Extension should be present', () => {
+		assert.ok(vscode.extensions.getExtension('sophio.vscode-onboarding'));
+	});
+
+	test('Time command should work from command bar', () => {
+		vscode.commands.executeCommand('vscode-onboarding.time');
+		assert.strictEqual(0, vscode.window.visibleTextEditors.length); 
+	});
+
+	test('Should pass sample unit test', () => {
+		assert.strictEqual(1, businessLogic());
 	});
 });

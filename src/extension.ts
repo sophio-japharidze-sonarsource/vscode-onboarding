@@ -28,3 +28,7 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 export function deactivate() {}
+
+export function businessLogic() {
+	return 1;
+}
