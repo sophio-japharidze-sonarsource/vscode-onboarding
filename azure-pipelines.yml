@@ -14,6 +14,8 @@ steps:
   displayName: 'Greet the user'
 - script: npm install
   displayName: 'Install NPM dependencies'
+- script: npm compile
+  displayName: 'Compile project'
 - script: npm test  
   displayName: 'Run tests'
 - script: npx vsce package
