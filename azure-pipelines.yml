@@ -10,10 +10,13 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- script: echo Hello!
+  displayName: 'Greet the user'
+- script: npm install
+  displayName: 'Install NPM dependencies'
+- script: npm run test  
+  displayName: 'Run tests'
+- script: npx vsce package
+  displayName: 'Create VSIX'   
+- script: echo Build finished
+  displayName: 'Finalize build'
