@@ -1,6 +1,6 @@
 import * as path from 'path';
 
-import { downloadAndUnzipVSCode, runTests } from '@vscode/test-electron';
+import { runTests } from '@vscode/test-electron';
 
 const XVFB_DISPLAY = ':10';
 
@@ -15,11 +15,7 @@ async function main() {
 		}
 
 		const extensionDevelopmentPath = path.resolve(__dirname, '../../');
-		const vscodeVersion = '1.52.0';
-		// const vscodeExecutablePath = await downloadAndUnzipVSCode(vscodeVersion);
 
-		// The path to test runner
-		// Passed to --extensionTestsPath
 		const extensionTestsPath = path.resolve(__dirname, './suite/index');
 
 		// Download VS Code, unzip it and run the integration test
