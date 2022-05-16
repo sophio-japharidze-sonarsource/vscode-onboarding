@@ -55,7 +55,7 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile",
     "lint": "eslint src --ext ts",
-    "test": "NODE_DEBUG=cluster,net,http,fs,tls,module,timers node ./out/test/runTest.js"
+    "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
     "@types/glob": "^7.2.0",
