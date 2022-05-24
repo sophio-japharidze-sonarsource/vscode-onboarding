@@ -5,4 +5,4 @@
 * Key binding `Cmd + T`
 * Explorer menu item `Greetings`
 
-**Enjoy!**
+**Enjoy! **
