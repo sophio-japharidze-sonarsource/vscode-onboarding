@@ -17,7 +17,7 @@
   "activationEvents": [
     "onLanguage:plaintext"
   ],
-  "main": "./client/out/extension.js",
+  "main": "./client/out/src/extension.js",
   "contributes": {
     "commands": [
       {
