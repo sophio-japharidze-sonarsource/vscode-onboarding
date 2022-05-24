@@ -78,7 +78,7 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run compile && webpack --mode production",
-    "compile": "tsc -p ./",
+    "compile": "tsc -p ./client && tsc -p ./server",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile",
     "lint": "eslint src --ext ts",
