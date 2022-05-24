@@ -9,7 +9,7 @@ const config = {
   target: 'node',
 
   // the entry point of this extension -> https://webpack.js.org/configuration/entry-context/
-  entry: './src/extension.ts',
+  entry: './client/src/extension.ts',
   output: {
     // the bundle is stored in the 'dist' folder (check package.json) -> https://webpack.js.org/configuration/output/
     path: path.resolve(__dirname, 'dist'),
