@@ -12,7 +12,11 @@ pool:
 steps:
 - script: echo Hello!
   displayName: 'Greet the user'
-- script: npm install
+- script: |
+    npm install
+    cd client && npm install
+    cd .. && cd server && npm install
+    cd ..
   displayName: 'Install NPM dependencies'
 - script: npm run compile
   displayName: 'Compile project'
