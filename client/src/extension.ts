@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import moment = require('moment');
+// import moment = require('moment');
 // import { GreetingProvider } from './greeting';
 // import { HelloWorldPanel } from './HelloWorldPanel';
 // import { AnimalType } from './domain';
@@ -37,7 +37,9 @@ export function activate(context: vscode.ExtensionContext) {
 
 	// context.subscriptions.push(disposable);
 	// context.subscriptions.push(time);
-	const serverModule = '/Users/sophio.japharidze/Documents/Sonar/vscode-onboarding/onboarding-language-server/src/server.js';
+	const serverModule = context.asAbsolutePath(
+		path.join('server', 'out', 'server.js')
+	);
 	// The debug options for the server
 	// --inspect=6009: runs the server in Node's Inspector mode so VS Code can attach to the server for debugging
 	const debugOptions = { execArgv: ['--nolazy', '--inspect=6009'] };

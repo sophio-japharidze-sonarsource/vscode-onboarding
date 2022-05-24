@@ -146,10 +146,10 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 
 	let diagnostics: Diagnostic[] = [];
 	let diagnostic: Diagnostic = {
-		severity: DiagnosticSeverity.Error,
+		severity: DiagnosticSeverity.Information,
 		range: {
 			start: textDocument.positionAt(0),
-			end: textDocument.positionAt(text.length - 1)
+			end: textDocument.positionAt(text.length)
 		},
 		message: `Document characters count: ${text.length}.`,
 		source: 'ex'

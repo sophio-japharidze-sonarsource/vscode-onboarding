@@ -17,7 +17,7 @@
   "activationEvents": [
     "onLanguage:plaintext"
   ],
-  "main": "./out/extension.js",
+  "main": "./client/out/extension.js",
   "contributes": {
     "commands": [
       {
@@ -76,7 +76,7 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile",
     "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
+    "test": "node ./client/out/test/runTest.js"
   },
   "devDependencies": {
     "@types/glob": "^7.2.0",
