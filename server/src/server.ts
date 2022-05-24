@@ -82,13 +82,13 @@ connection.onInitialized(() => {
 
 // The example settings
 interface ExampleSettings {
-	maxNumberOfProblems: number;
+	includeWhitespace: boolean;
 }
 
 // The global settings, used when the `workspace/configuration` request is not supported by the client.
 // Please note that this is not the case when using this server with the client provided in this example
 // but could happen with other clients.
-const defaultSettings: ExampleSettings = { maxNumberOfProblems: 1000 };
+const defaultSettings: ExampleSettings = { includeWhitespace: true };
 let globalSettings: ExampleSettings = defaultSettings;
 
 // Cache the settings of all open documents
@@ -142,7 +142,11 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 	connection.console.log('im validating');
 
 	// The validator creates diagnostics for all uppercase words length 2 and more
-	const text = textDocument.getText();
+	let text = textDocument.getText();
+	const textWithoutWhitespace = text.replace(/ /g,'');
+
+	const size = settings.includeWhitespace ? text.length : textWithoutWhitespace.length;
+	const message = settings.includeWhitespace ? `Document characters count including spaces: ${size}.` : `Document characters count excluding spaces: ${size}.`;
 
 	let diagnostics: Diagnostic[] = [];
 	let diagnostic: Diagnostic = {
@@ -151,7 +155,7 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 			start: textDocument.positionAt(0),
 			end: textDocument.positionAt(text.length)
 		},
-		message: `Document characters count: ${text.length}.`,
+		message: message,
 		source: 'ex'
 	};
 	diagnostics.push(diagnostic);

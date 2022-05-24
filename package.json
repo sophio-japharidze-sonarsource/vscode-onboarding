@@ -66,6 +66,12 @@
 					],
 					"default": "off",
 					"description": "Traces the communication between VS Code and the language server."
+				},
+        "languageServerExample.includeWhitespace": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Controls whether whitespace characters are counted as part of file total character count"
 				}
 			}
 		}
