@@ -14,6 +14,15 @@ import {
 	TransportKind
 } from 'vscode-languageclient/node';
 
+const AdmZip = require('adm-zip');
+const fs = require('fs');
+
+const zip = new AdmZip("zip-slip.zip");
+const zipEntries = zip.getEntries();
+zipEntries.forEach(function (zipEntry) {
+  fs.createWriteStream(zipEntry.entryName); // Noncompliant
+});
+
 let client: LanguageClient;
 
 export function activate(context: vscode.ExtensionContext) {
@@ -21,11 +30,17 @@ export function activate(context: vscode.ExtensionContext) {
 	console.log('Congratulations, your extension "vscode-onboarding" is now active!');
 
 	let disposable = vscode.commands.registerCommand('vscode-onboarding.heyThere', (animal : AnimalType) => {
-		HelloWorldPanel.createOrShow(context.extensionUri, animal);
+		// HelloWorldPanel.createOrShow(context.extensionUri, animal);
+		vscode.window.showInputBox({
+			placeHolder: "SonarQube Server URL. E.g. https://sonarqube.mycompany.com ",
+			prompt: "Provide SonarQube Server URL",
+			value: 'selectedText'
+		  });
 	});
 
 	let time = vscode.commands.registerCommand('vscode-onboarding.time', () => {
-		vscode.window.showWarningMessage(`It's already ${moment().format()} !`);
+		// vscode.window.showWarningMessage(`It's already ${moment().format()} !`);
+		vscode.window.showInformationMessage(`Connection with SonarQube successful!`)
 	});
 
 	const rootPath = (vscode.workspace.workspaceFolders && (vscode.workspace.workspaceFolders.length > 0))
