@@ -42,7 +42,7 @@ export class HelloWorldPanel {
 		// Otherwise, create a new panel.
 		const panel = vscode.window.createWebviewPanel(
 			HelloWorldPanel.viewType,
-			titles[animal],
+			'Connect to SQ',
 			column || vscode.ViewColumn.One,
 			getWebviewOptions(extensionUri),
 		);
@@ -141,7 +141,13 @@ export class HelloWorldPanel {
 				<title>Cat Coding</title>
 			</head>
 			<body>
-				<img src=${this.gifs[animal]} width="300" />
+				<!-- <img src=${this.gifs[animal]} width="300" /> -->
+				<div style='text-align:center'>
+					<h1>Set up connection with SonarQube</h1>
+					<label>SonarQube Server URL</label>
+					<input type="text" placeholder="https://sonarqube.mycompany.com" style="width:250px">
+					<input type="submit" value="Connect">
+				</div>
 			</body>
 			</html>`;
 	}
