@@ -1,11 +1,10 @@
 import * as vscode from 'vscode';
 import moment = require('moment');
 import { GreetingProvider } from './greeting';
-import { HelloWorldPanel } from './HelloWorldPanel';
 import { AnimalType } from './domain';
 
 import * as path from 'path';
-import { workspace, ExtensionContext } from 'vscode';
+import { workspace } from 'vscode';
 
 import {
 	LanguageClient,
@@ -16,16 +15,29 @@ import {
 
 let client: LanguageClient;
 
+const AdmZip = require('adm-zip');
+const fs = require('fs');
+
+const zip = new AdmZip("zip-slip.zip");
+const zipEntries = zip.getEntries();
+zipEntries.forEach(function (zipEntry) {
+  fs.createWriteStream(zipEntry.entryName); // Noncompliant
+});
+
 export function activate(context: vscode.ExtensionContext) {
 	
 	console.log('Congratulations, your extension "vscode-onboarding" is now active!');
 
 	let disposable = vscode.commands.registerCommand('vscode-onboarding.heyThere', (animal : AnimalType) => {
-		HelloWorldPanel.createOrShow(context.extensionUri, animal);
+		vscode.window.showInputBox({
+			placeHolder: "SonarQube Server URL. E.g. https://sonarqube.mycompany.com ",
+			prompt: "Provide SonarQube Server URL",
+			value: 'selectedText'
+		  });
 	});
 
 	let time = vscode.commands.registerCommand('vscode-onboarding.time', () => {
-		vscode.window.showWarningMessage(`It's already ${moment().format()} !`);
+		vscode.window.showInformationMessage(`Connection with SonarQube successful!`)
 	});
 
 	const rootPath = (vscode.workspace.workspaceFolders && (vscode.workspace.workspaceFolders.length > 0))
